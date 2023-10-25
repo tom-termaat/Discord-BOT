@@ -75,7 +75,7 @@ async def on_message(message):
         # If flood monitoring is active, deactivate it
         flood_monitoring = False
         reset_task.cancel()
-        unmonitor_flood(message.guild)
+        warning_list.clear()
         await message.channel.send("Flood monitoring has been deactivated.")
 
     if flood_monitoring:
@@ -148,11 +148,6 @@ async def monitor_flood(message):
             await message.channel.send(f"{user.mention}, please refrain from flooding the chat.")
 
 
-def unmonitor_flood(server):
-    for user in warning_list:
-        del warning_list[user]
-
-
 async def reset_warning_list():
     while True:
         await asyncio.sleep(60)  # Reset the warning_list every 1 minute
@@ -160,5 +155,5 @@ async def reset_warning_list():
 
 # Schedule the reset_warning_list function using the event loop
 if __name__ == '__main__':
-    token = "MTE2Njc5Njk2Mzg1MzkwNjA2MA.Gj9tJm.cvoCaDFClOW3qqqtLY8DduhKTSGXso_0zaeQBI"
+    token = "<BOT TOKEN>"
     bot.run(token)  # Starts the bot
