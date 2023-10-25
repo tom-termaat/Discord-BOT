@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord
 import random
 import asyncio
+import requests
 
 intents = discord.Intents.default()
 intents.members = True
@@ -152,6 +153,29 @@ async def reset_warning_list():
     while True:
         await asyncio.sleep(60)  # Reset the warning_list every 1 minute
         warning_list.clear()  # Clear the warning_list
+
+@bot.command()
+async def xkcd(ctx):
+    try:
+        # Fetch XKCD JSON data
+        response = requests.get("https://xkcd.com/info.0.json")
+        if response.status_code == 200:
+            xkcd_data = response.json()
+            comic_number = random.randint(1, xkcd_data["num"])  # Get a random comic number
+
+            # Fetch the random XKCD comic
+            comic_response = requests.get(f"https://xkcd.com/{comic_number}/info.0.json")
+            if comic_response.status_code == 200:
+                comic_data = comic_response.json()
+                comic_url = comic_data["img"]
+                await ctx.send(comic_url)  # Send the comic URL
+            else:
+                await ctx.send("Failed to fetch XKCD comic.")
+        else:
+            await ctx.send("Failed to fetch XKCD data.")
+    except Exception as e:
+        print(e)
+        await ctx.send("An error occurred while fetching the XKCD comic.")
 
 # Schedule the reset_warning_list function using the event loop
 if __name__ == '__main__':
