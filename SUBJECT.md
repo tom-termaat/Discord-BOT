@@ -36,16 +36,16 @@
 
 ### Warm-up 
 
-[ ] When typing `!name` the bot should write back the name of the user typing the command
+[x] When typing `!name` the bot should write back the name of the user typing the command
 
-[ ] When typing `!d6` the bot should answer with a value between 1 and 6
+[x] When typing `!d6` the bot should answer with a value between 1 and 6
 
-[ ] When typing "Salut tout le monde" (without the command sign), the bot should say "Salut tout seul" and ping the original author of the message 
+[x] When typing "Salut tout le monde" (without the command sign), the bot should say "Salut tout seul" and ping the original author of the message 
 
 ### Administration
-[ ] When typing `!admin <A member nickname>`, your bot should create an Admin role (if it doesn't exists) on your server, allowing them to manage channels, kick and ban members, and give it to the member in parameter
+[x] When typing `!admin <A member nickname>`, your bot should create an Admin role (if it doesn't exists) on your server, allowing them to manage channels, kick and ban members, and give it to the member in parameter
 
-[ ] When typing `!ban <A member nickname> <ban reason?>`, your bot should ban that member from the server (**Test with caution**) displaying the input reason for the ban. If no ban reason is input, your bot should display a funny catchphrase picked at random in a given list
+[x] When typing `!ban <A member nickname> <ban reason?>`, your bot should ban that member from the server (**Test with caution**) displaying the input reason for the ban. If no ban reason is input, your bot should display a funny catchphrase picked at random in a given list
 
 [ ] The command `!flood` should activate (or deactivate) a moderation workflow. When activated, your bot should monitor the messages and display a warning to any user posting more than X messages in the last Y minutes. The (de)activation should be confirmed using a custom message
 
