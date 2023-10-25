@@ -177,6 +177,16 @@ async def xkcd(ctx):
         print(e)
         await ctx.send("An error occurred while fetching the XKCD comic.")
 
+@bot.command()
+async def poll(ctx, question):
+    # Mention @here and post the poll question
+    poll_message = await ctx.send(f"@here {question}")
+
+    # Add reactions to the poll message
+    await poll_message.add_reaction("👍")  # Thumbs-up
+    await poll_message.add_reaction("👎")  # Thumbs-down
+
+
 # Schedule the reset_warning_list function using the event loop
 if __name__ == '__main__':
     token = "<BOT TOKEN>"
